@@ -1,5 +1,5 @@
 /* عمره فيما أفناه — service worker: offline app shell */
-const VERSION = 'v1.0.3';
+const VERSION = 'v1.0.4';
 const SHELL = 'shell-' + VERSION;
 const FONTS = 'fonts-v1';
 const ASSETS = [
