@@ -485,6 +485,7 @@ function cleanMonth(m){
 
 /* ---------- State ---------- */
 const S={items:[],metaU:0,months:{},prefs:{open:{},closedCats:{},lastBackup:null}};
+const openCats={};
 let selDate=todayStr(),lastToday=selDate,calY,calM,statTab='week',mlogLimit=20;
 const syncCal=()=>{const d=parse(selDate);calY=d.getFullYear();calM=d.getMonth();};
 const mkey=d=>d.slice(0,7);
@@ -738,7 +739,7 @@ function renderCats(){
     const all=S.items.filter(i=>i.cat===C.k),items=all.filter(i=>scheduled(i,d));
     if(!all.length)return '';
     const done=items.filter(i=>isDone(i,rec(d,i.id))).length;
-    const open=!S.prefs.closedCats[C.k];
+    const open=!!openCats[C.k];
     const off=all.length-items.length;
     return `<section class="card cat${open?' open':''}" style="--c:${C.color}">
       <button class="cat-h" data-cat="${C.k}" aria-expanded="${open}"><span class="cic">${icon(C.icon)}</span><span class="ttl">${C.name}</span><span class="cnt">${done}/${items.length}</span>${icon('chevR','chev')}</button>
@@ -1140,7 +1141,7 @@ document.addEventListener('click',async ev=>{
   const t=ev.target;let b;
   if((b=t.closest('[data-action]'))){if(b.dataset.action==='export')exportData();else openImport();return;}
   if((b=t.closest('.acc-head'))){const n=b.parentElement.dataset.acc;S.prefs.open[n]=!S.prefs.open[n];savePrefs();renderAccState();return;}
-  if((b=t.closest('[data-cat]'))){const k=b.dataset.cat;S.prefs.closedCats[k]=!S.prefs.closedCats[k];savePrefs();renderCats();return;}
+  if((b=t.closest('[data-cat]'))){const k=b.dataset.cat;openCats[k]=!openCats[k];renderCats();return;}
   if((b=t.closest('[data-tick]'))){const id=b.dataset.tick,r=rec(selDate,id);setRec(selDate,id,{v:r&&r.v?null:1});renderDay();return;}
   if((b=t.closest('[data-inc]'))){const it=itemById(b.dataset.inc),r=rec(selDate,it.id);setRec(selDate,it.id,{v:Math.round(((r&&r.v||0)+it.step)*100)/100});renderDay();return;}
   if((b=t.closest('[data-dec]'))){const it=itemById(b.dataset.dec),r=rec(selDate,it.id);const v=Math.max(0,Math.round(((r&&r.v||0)-it.step)*100)/100);setRec(selDate,it.id,{v:v||null});renderDay();return;}
