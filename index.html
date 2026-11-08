@@ -286,10 +286,6 @@ textarea.json{direction:ltr;text-align:left;font-family:ui-monospace,Menlo,monos
 
   <section class="card muh" id="muh"></section>
 
-  <section class="card acc" data-acc="calendar">
-    <div class="acc-head" role="button" tabindex="0"><span data-ic="calendar" class="icw"></span><span class="ttl">تقويم الالتزام</span><span class="chevw"></span></div>
-    <div class="acc-body" id="calBody"></div>
-  </section>
   <section class="card acc" data-acc="stats">
     <div class="acc-head" role="button" tabindex="0"><span data-ic="chart" class="icw"></span><span class="ttl">الإحصائيات</span><span class="chevw"></span></div>
     <div class="acc-body" id="statsBody"></div>
@@ -312,7 +308,7 @@ textarea.json{direction:ltr;text-align:left;font-family:ui-monospace,Menlo,monos
   <div class="bnav-in">
     <button class="on" data-nav="home"><span data-ic="home"></span>الرئيسية</button>
     <button data-nav="stats"><span data-ic="chart"></span>الإحصائيات</button>
-    <button data-nav="calendar"><span data-ic="calendar"></span>التقويم</button>
+    <button data-nav="mlog"><span data-ic="pen"></span>المحاسبة</button>
     <button data-nav="manage"><span data-ic="list"></span>البنود</button>
     <button data-nav="more"><span data-ic="more"></span>المزيد</button>
   </div>
@@ -934,8 +930,8 @@ function renderWarn(){
   if(Local.mode==='memory'&&!Cloud.col){w.textContent='تنبيه: لا يتاح الحفظ في هذا المتصفح الآن، فقد تضيع التسجيلات عند إغلاق الصفحة. صدّر نسخة احتياطية قبل الخروج.';w.classList.remove('hidden');}
   else w.classList.add('hidden');
 }
-function renderAll(){renderDate();renderProg();renderCats();renderMuh();renderCalendar();renderStats();renderMlog();renderManage();renderBackup();renderWarn();}
-function renderDay(){renderProg();renderCats();renderCalendar();renderStats();}
+function renderAll(){renderDate();renderProg();renderCats();renderMuh();renderStats();renderMlog();renderManage();renderBackup();renderWarn();}
+function renderDay(){renderProg();renderCats();renderStats();}
 
 /* ---------- Sheet / dialog / toast ---------- */
 let toastT;
