@@ -67,6 +67,7 @@ svg{flex:none}
 .prog-t p{margin:0 0 6px;font-size:13px;opacity:.9}
 .qlink{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:10px;background:#ffffff1f;border:1px solid #ffffff38;font-weight:700;font-size:13px;text-decoration:none;color:#fff}
 .qlink svg{width:16px;height:16px}
+.qlinks{display:flex;flex-wrap:wrap;gap:6px}
 
 /* category cards */
 .cat{margin-top:10px;overflow:hidden}
@@ -325,6 +326,7 @@ const $=(s,r)=>(r||document).querySelector(s);
 const $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const QURAN_URL='https://jafaralnaqbi.github.io/mutabaati-quran/';
+const ADHKAR_URL='https://adhkhar100.vercel.app/';
 
 /* ---------- Icons ---------- */
 const I={
@@ -677,7 +679,7 @@ function renderProg(){
   const t=selDate===todayStr();
   $('#prog').innerHTML=`<div class="ring"><svg viewBox="0 0 86 86"><circle cx="43" cy="43" r="36" stroke="#ffffff2e" stroke-width="10" fill="none"/><circle cx="43" cy="43" r="36" stroke="#f6d784" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p/100)}"/></svg><b>${p}%</b></div>
   <div class="prog-t"><h2>${t?'التزامك اليوم':'التزامك في هذا اليوم'}</h2><p>${ds?`أتممت ${ds.done} من ${ds.n} بندًا`:'لا بنود مجدولة لهذا اليوم'}</p>
-  <a class="qlink" href="${QURAN_URL}" rel="noopener">${icon('book')}متابعتي مع القرآن</a></div>`;
+  <div class="qlinks"><a class="qlink" href="${QURAN_URL}" rel="noopener">${icon('book')}متابعتي مع القرآن</a><a class="qlink" href="${ADHKAR_URL}" rel="noopener">${icon('beads')}الأذكار المئوية</a></div></div>`;
 }
 
 /* ---------- Render: items ---------- */
