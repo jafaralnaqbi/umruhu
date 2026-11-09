@@ -679,7 +679,7 @@ function renderProg(){
   const t=selDate===todayStr();
   $('#prog').innerHTML=`<div class="ring"><svg viewBox="0 0 86 86"><circle cx="43" cy="43" r="36" stroke="#ffffff2e" stroke-width="10" fill="none"/><circle cx="43" cy="43" r="36" stroke="#f6d784" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p/100)}"/></svg><b>${p}%</b></div>
   <div class="prog-t"><h2>${t?'التزامك اليوم':'التزامك في هذا اليوم'}</h2><p>${ds?`أتممت ${ds.done} من ${ds.n} بندًا`:'لا بنود مجدولة لهذا اليوم'}</p>
-  <div class="qlinks"><a class="qlink" href="${QURAN_URL}" rel="noopener">${icon('book')}متابعتي مع القرآن</a><a class="qlink" href="${ADHKAR_URL}" rel="noopener">${icon('beads')}الأذكار المئوية</a></div></div>`;
+  <div class="qlinks"><a class="qlink" href="${QURAN_URL}" rel="noopener">${icon('book')}متابعتي مع القرآن</a><a class="qlink" href="${ADHKAR_URL}" rel="noopener">${icon('beads')}الأذكار اليومية 100</a></div></div>`;
 }
 
 /* ---------- Render: items ---------- */
