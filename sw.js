@@ -1,5 +1,5 @@
 /* عمره فيما أفناه — service worker: offline app shell */
-const VERSION = 'v1.0.5';
+const VERSION = 'v1.0.6';
 const SHELL = 'shell-' + VERSION;
 const FONTS = 'fonts-v1';
 const ASSETS = [
@@ -46,7 +46,7 @@ self.addEventListener('fetch', (e) => {
   // Pages: network first so updates arrive, cached copy when offline
   if (req.mode === 'navigate') {
     e.respondWith(
-      fetch(req)
+      fetch(req, { cache: 'no-cache' })
         .then((r) => { const copy = r.clone(); caches.open(SHELL).then((c) => c.put('./index.html', copy)); return r; })
         .catch(() => caches.match('./index.html'))
     );
